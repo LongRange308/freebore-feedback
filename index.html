@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Freebore — Beta feedback</title>
+<meta name="description" content="Send feedback about the Freebore beta: bugs, ideas and questions.">
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; background: #f3f1ec; color: #171c24; font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  header { background: #151b25; color: #f6f3ec; padding: 28px 20px; }
+  header h1 { margin: 0 auto; max-width: 760px; font-size: 26px; }
+  header p { margin: 4px auto 0; max-width: 760px; color: #d9a54e; }
+  main { max-width: 760px; margin: 0 auto; padding: 8px 20px 48px; }
+  h2 { font-size: 19px; margin: 28px 0 6px; }
+  .card { background: #fff; border: 1px solid #e2ddd2; border-radius: 12px; padding: 4px 20px 20px; margin-top: 20px; }
+  a { color: #a85a0c; }
+  footer { color: #5f6673; font-size: 14px; margin-top: 32px; }
+  form { margin-top: 8px; }
+  label { display: block; font-weight: 600; margin: 14px 0 4px; }
+  input, textarea, select {
+    width: 100%; box-sizing: border-box; font: inherit; color: inherit;
+    border: 1px solid #d6d0c3; border-radius: 8px; padding: 10px 12px; background: #fff;
+  }
+  textarea { min-height: 160px; resize: vertical; }
+  button {
+    margin-top: 16px; background: #a85a0c; color: #fff; border: 0; border-radius: 8px;
+    font: inherit; font-weight: 600; padding: 12px 18px; cursor: pointer;
+  }
+  .hint { color: #5f6673; font-size: 14px; margin: 4px 0 0; }
+  .hp { position: absolute; left: -9999px; height: 0; width: 0; overflow: hidden; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Freebore — Beta feedback</h1>
+  <p>Thanks for testing Freebore</p>
+</header>
+<main>
+<div class="card">
+  <p>Freebore is a logbook for precision rifle shooters: rifles and barrels with round counts, a dope book, group measurement from photos, and a range log. It is developed by Michael Leaf.</p>
+
+  <h2>Send feedback</h2>
+  <p>Bugs, ideas, things that are confusing: all of it helps. For a bug, say what you tapped and what happened.</p>
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="cc2727b1-7ecc-4510-b9ba-02e1c02a5692">
+    <input type="hidden" name="subject" value="Freebore beta feedback">
+    <input type="hidden" name="from_name" value="Freebore beta">
+    <input type="hidden" name="redirect" value="https://longrange308.github.io/freebore-feedback/thanks.html">
+    <div class="hp">
+      <label for="botcheck">Leave this empty</label>
+      <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+    </div>
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" required autocomplete="name">
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" required autocomplete="email">
+    <label for="kind">Type</label>
+    <select id="kind" name="type">
+      <option>Bug or problem</option>
+      <option>Idea or request</option>
+      <option>Question</option>
+      <option>Other</option>
+    </select>
+    <label for="device">Phone and Android version</label>
+    <input id="device" type="text" name="device" autocomplete="off" placeholder="e.g. Pixel 9a, Android 16">
+    <label for="version">Freebore version</label>
+    <input id="version" type="text" name="app_version" autocomplete="off" placeholder="More tab › About">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required></textarea>
+    <p class="hint">Please don't include passwords or other private information.</p>
+    <button type="submit">Send feedback</button>
+  </form>
+
+  <h2>Your data</h2>
+  <p>Freebore keeps everything on your phone. It has no account, no ads and no tracking, and nothing is sent anywhere unless you share a backup, spreadsheet or PDF yourself. This form only sends what you type into it.</p>
+
+  <h2>Privacy policy</h2>
+  <p><a href="https://longrange308.github.io/freebore-privacy/">Freebore privacy policy</a></p>
+
+  <footer>Freebore · com.michaelleaf.freebore</footer>
+</div>
+</main>
+</body>
+</html>
