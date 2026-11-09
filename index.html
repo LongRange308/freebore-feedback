@@ -46,6 +46,8 @@
     <input type="hidden" name="_subject" value="Freebore beta feedback">
     <input type="hidden" name="_next" value="https://longrange308.github.io/freebore-feedback/thanks.html">
     <input type="hidden" name="_template" value="table">
+    <!-- FormSubmit's robot-check step drops messages that have attachments, so it is off; the _honey field below still traps spam bots. -->
+    <input type="hidden" name="_captcha" value="false">
     <div class="hp">
       <label for="honey">Leave this empty</label>
       <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off">
