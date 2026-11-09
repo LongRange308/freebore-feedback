@@ -42,14 +42,13 @@
 
   <h2>Send feedback</h2>
   <p>Bugs, ideas, things that are confusing: all of it helps. For a bug, say what you tapped and what happened.</p>
-  <form action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="cc2727b1-7ecc-4510-b9ba-02e1c02a5692">
-    <input type="hidden" name="subject" value="Freebore beta feedback">
-    <input type="hidden" name="from_name" value="Freebore beta">
-    <input type="hidden" name="redirect" value="https://longrange308.github.io/freebore-feedback/thanks.html">
+  <form id="feedback" action="https://formsubmit.co/15b61bb4d0ec181e43a8f587e41b653a" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="Freebore beta feedback">
+    <input type="hidden" name="_next" value="https://longrange308.github.io/freebore-feedback/thanks.html">
+    <input type="hidden" name="_template" value="table">
     <div class="hp">
-      <label for="botcheck">Leave this empty</label>
-      <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+      <label for="honey">Leave this empty</label>
+      <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off">
     </div>
     <label for="name">Name</label>
     <input id="name" type="text" name="name" required autocomplete="name">
@@ -68,9 +67,39 @@
     <input id="version" type="text" name="app_version" autocomplete="off" placeholder="More tab › About">
     <label for="message">Message</label>
     <textarea id="message" name="message" required></textarea>
+    <label for="files">Attach files (optional)</label>
+    <input id="files" type="file" name="attachment" multiple accept=".csv,.tsv,.txt,.xlsx,.xls,.fit,.zip,.png,.jpg,.jpeg,.heic,.webp,.pdf">
+    <p class="hint">Chronograph exports (.csv, .xlsx, .fit), screenshots, photos or a .zip. Up to 10 MB in total.</p>
+    <p class="hint" id="filesize" role="status"></p>
+    <label for="link">Or a link to larger files (optional)</label>
+    <input id="link" type="url" name="files_link" autocomplete="off" placeholder="Google Drive, Dropbox or OneDrive share link">
     <p class="hint">Please don't include passwords or other private information.</p>
     <button type="submit">Send feedback</button>
   </form>
+  <script>
+    // FormSubmit accepts up to 10 MB of attachments per message; warn before sending more.
+    (function () {
+      var input = document.getElementById('files');
+      var status = document.getElementById('filesize');
+      var form = document.getElementById('feedback');
+      var limit = 10 * 1024 * 1024;
+      function total() {
+        var sum = 0;
+        for (var i = 0; i < input.files.length; i++) sum += input.files[i].size;
+        return sum;
+      }
+      input.addEventListener('change', function () {
+        var mb = (total() / 1024 / 1024).toFixed(1);
+        status.textContent = input.files.length ? input.files.length + ' file(s), ' + mb + ' MB' + (total() > limit ? ' — over the 10 MB limit. Use a link for larger files.' : '') : '';
+      });
+      form.addEventListener('submit', function (e) {
+        if (total() > limit) {
+          e.preventDefault();
+          status.textContent = 'The attachments add up to more than 10 MB. Remove some, or share them with a link instead.';
+        }
+      });
+    })();
+  </script>
 
   <h2>Your data</h2>
   <p>Freebore keeps everything on your phone. It has no account, no ads and no tracking, and nothing is sent anywhere unless you share a backup, spreadsheet or PDF yourself. This form only sends what you type into it.</p>
